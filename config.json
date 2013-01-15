@@ -1,7 +1,4 @@
 {
-  "version": "v0.6.18",
-  "npm": true,
-  "main": "app.js",
-  "args": [],
-  "envs": {}
+  "version": "v0.4.12",
+  "npm": false
 }
