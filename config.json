@@ -1,7 +1,7 @@
 {
-	"version" : "v0.6.18",
-	"rpm" : true
-	"main" : "server.js"
-	"args" : [],
-	"envs" : {}
+  "version": "v0.6.18",
+  "npm": true,
+  "main": "app.js",
+  "args": [],
+  "envs": {}
 }
