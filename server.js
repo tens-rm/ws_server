@@ -1,6 +1,6 @@
 var http = require('http');
-var func = function( req, res ) {
-	res.writeHead( 200, {'Content-Type':'text/plain'});
-	res.end('Hello NodeNinja');
-}
-http.createServer( func ).listen( 8080 );
+http.createServer( function( req, res ) {
+						res.writeHead( 200, {'Content-Type':'text/plain'});
+						res.end('Hello NodeNinja');
+					}
+				 ).listen( 8080 );
