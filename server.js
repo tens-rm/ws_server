@@ -25,6 +25,7 @@ server.addListener("connection", function(connection)
 		user.date		= new Date();
 		user.save( function(err){
 					if(err){
+						sys.puts( getLastError() );
 						sys.puts('database save failed.');
 						sys.puts(err);
 					}
