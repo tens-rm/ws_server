@@ -9,6 +9,11 @@ var	UserSchema	= new Schema({
 });
 
 mg.model('User',UserSchema);
+
+mg.on('error', function(errorObject){
+	sys.puts( errorObject );
+});
+
 mg.connect('mongodb://localhost/test');
 var	User	= mg.model( 'User' );
 
@@ -25,7 +30,6 @@ server.addListener("connection", function(connection)
 		user.date		= new Date();
 		user.save( function(err){
 					if(err){
-						sys.puts( getLastError() );
 						sys.puts('database save failed.');
 						sys.puts(err);
 					}
