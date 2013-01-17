@@ -1,5 +1,22 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Node Ninja\n');
-}).listen(80);
+var	sys	= require('sys');
+var	ws	= require('websocket-server');
+
+var	server	= ws.createServer();
+
+server.addListener("connection", function(connection)
+{
+	sys.puts("connect");
+
+	connection.addListener("message",function(message)
+	{
+		sys.puts(message);
+	});
+});
+
+server.addListener("close", function(connection)
+{
+	sys.puts("close");
+});
+
+// 8000ポートで待機
+server.listen(8000);
