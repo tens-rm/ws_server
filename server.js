@@ -23,7 +23,12 @@ server.addListener("connection", function(connection)
 		var user	= new User();
 		user.message	= message;
 		user.date		= new Date();
-		user.save( function(err){if(err){sys.puts(err);}} );
+		user.save( function(err){
+					if(err){
+						sys.puts('database save failed.');
+						sys.puts(err);
+					}
+		});
 		sys.puts(message);
 	});
 });
