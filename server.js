@@ -10,7 +10,7 @@ var	UserSchema	= new Schema({
 
 mg.model('User',UserSchema);
 
-var connection	= mg.connection('mongodb://localhost/test');
+var connection	= mg.createConnection('mongodb://localhost/test');
 connection.on('error', function(errorObject){ sys.puts( errorObject );} );
 
 var	User	= mg.model( 'User' );
