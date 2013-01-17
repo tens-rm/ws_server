@@ -10,10 +10,11 @@ var	UserSchema	= new Schema({
 
 mg.model('User',UserSchema);
 
-var connection	= mg.createConnection('mongodb://localhost/test');
-connection.on('error', function(errorObject){ sys.puts( errorObject );} );
+var cnn		= mg.createConnection('mongodb://localhost/test');
+var	User	= cnn.model( 'User' );
 
-var	User	= mg.model( 'User' );
+cnn.on('error', function(errorObject){ sys.puts( errorObject );} );
+
 var	server	= ws.createServer();
 
 server.addListener("connection", function(connection)
