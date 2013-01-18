@@ -8,6 +8,7 @@ var	UserSchema	= new Schema({
 	date: Date
 });
 
+
 mg.model('User',UserSchema);
 
 var cnn		= mg.createConnection('mongodb://localhost/test');
