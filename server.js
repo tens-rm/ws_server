@@ -11,9 +11,7 @@ http.createServer(function(req,res){
 		req.on( 'data', function(data){ body += data; } );
 		req.on( 'end', function() {
 				var POST  = query.parse( body );
-				res.writeHead(200, {"Content-Type": "text/plain"});
-				res.write(POST);
-				res.end();
+				console.log( POST );
 		} );
 	}
 	else
@@ -22,6 +20,7 @@ http.createServer(function(req,res){
 		res.writeHead(200, {"Content-Type": "text/plain"});
 		res.write('GET Method');
 		res.end();
+		console.log( 'GET Method' );
 	}
 	else
 	{
