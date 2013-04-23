@@ -19,6 +19,15 @@ http.createServer(function(req,res){
 	else
 	if( req.method=='GET' )
 	{
+		res.writeHead(200, {"Content-Type": "text/plain"});
+		res.write('GET Method');
+		res.end();
+	}
+	else
+	{
+		res.writeHead(200, {"Content-Type": "text/plain"});
+		res.write('Not POST or GET Method');
+		res.end();
 	}
 
 }).listen(8000);
