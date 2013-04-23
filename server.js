@@ -12,6 +12,7 @@ http.createServer(function(req,res){
 		req.on( 'end', function() {
 				var POST  = query.parse( body );
 				console.log( POST );
+				res.end();
 		} );
 	}
 	else
