@@ -23,7 +23,7 @@ http.createServer(function(req,res){
 
 				users.find( function( err, mice ){
 					if( err ) console.log( err );
-					res.send( mice );
+					res.write( mice );
 					res.end();
 				});
 		} );
