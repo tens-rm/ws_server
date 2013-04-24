@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 var db       = mongoose.connect( 'mongodb://localhost/test' );
 
 var user_data= new mongoose.Schema({
-	id			: {type:String}
-	,passwd		: {type:String}
+	id
+	,passwd
 });
 
 var UserData = db.model( 'user_data', user_data );
