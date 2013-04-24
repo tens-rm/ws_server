@@ -24,7 +24,7 @@ http.createServer(function(req,res){
 				var POST  = query.parse( body );
 				console.log( POST );
 
-				Users.find( function( err, result ){
+				Users.find( POST, function( err, result ){
 					if( err ) console.log( err );
 					console.log( 'item num -> ' + result.length );
 					for( var i=0; i<result.length; ++i ) {
