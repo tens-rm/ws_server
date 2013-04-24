@@ -3,6 +3,14 @@ var http = require('http');
 var url  = require('url');
 var query= require('querystring');
 
+var mongoose = require('mongoose');
+var db       = mongoose.createConnection('mongodb://localhost/test');
+var user_data= new mongoose.Schema({
+	id			: String,
+	pss			: String,
+});
+var users    = db.model( 'user_data', user_data );
+
 http.createServer(function(req,res){
 
 	if( req.method=='POST' )
@@ -12,7 +20,12 @@ http.createServer(function(req,res){
 		req.on( 'end', function() {
 				var POST  = query.parse( body );
 				console.log( POST );
-				res.end();
+
+				users.find( function( err, mice ){
+					if( err ) console.log( err );
+					res.send( mice );
+					res.end();
+				});
 		} );
 	}
 	else
