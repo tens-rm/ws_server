@@ -31,7 +31,7 @@ http.createServer(function(req,res){
 						console.log( result[ i ] );
 					}
 					res.writeHead(200, {"Content-Type": "text/plain"});
-					res.write( result );
+					res.write( result + '');
 					res.end();
 				});
 		} );
