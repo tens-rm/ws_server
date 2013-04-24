@@ -6,11 +6,11 @@ var query= require('querystring');
 var mongoose = require('mongoose');
 
 // スキーマ定義
-var user_data= new mongoose.Schema({
-	id			: String
+var users= new mongoose.Schema({
+	name		: String
 	,passwd		: String
 });
-var UserData = mongoose.model( 'user_data', user_data );
+var Users = mongoose.model( 'users', users );
 
 mongoose.connect( 'mongodb://localhost/test' );
 
@@ -24,7 +24,7 @@ http.createServer(function(req,res){
 				var POST  = query.parse( body );
 				console.log( POST );
 
-				UserData.find( function( err, result ){
+				Users.find( function( err, result ){
 					if( err ) console.log( err );
 					console.log( 'item num -> ' + result.length );
 					for( var i=0; i<result.length; ++i ) {
