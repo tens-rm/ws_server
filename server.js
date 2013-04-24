@@ -6,12 +6,12 @@ var query= require('querystring');
 var mongoose = require('mongoose');
 var db       = mongoose.connect( 'mongodb://localhost/test' );
 
-var user_data= new mongoose.Schema({
-	id
-	,passwd
-});
+//var user_data= new mongoose.Schema({
+//	id			: {type:String}
+//	,passwd		: {type:String}
+//});
 
-var UserData = db.model( 'user_data', user_data );
+var UserData = db.model( 'user_data' );
 
 http.createServer(function(req,res){
 
