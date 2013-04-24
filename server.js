@@ -4,14 +4,15 @@ var url  = require('url');
 var query= require('querystring');
 
 var mongoose = require('mongoose');
-var db       = mongoose.connect( 'mongodb://localhost/test' );
 
-//var user_data= new mongoose.Schema({
-//	id			: {type:String}
-//	,passwd		: {type:String}
-//});
+// スキーマ定義
+var user_data= new mongoose.Schema({
+	id			: String
+	,passwd		: String
+});
+var UserData = mongoose.model( 'user_data', user_data );
 
-var UserData = db.model( 'user_data' );
+mongoose.connect( 'mongodb://localhost/test' );
 
 http.createServer(function(req,res){
 
@@ -25,7 +26,10 @@ http.createServer(function(req,res){
 
 				UserData.find( function( err, result ){
 					if( err ) console.log( err );
-					console.log( result );
+					console.log( 'item num -> ' + result.length );
+					for( var i=0; i<result.length; ++i ) {
+						console.log( result[ i ] );
+					}
 					res.end();
 				});
 		} );
