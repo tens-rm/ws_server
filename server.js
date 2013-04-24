@@ -4,15 +4,14 @@ var url  = require('url');
 var query= require('querystring');
 
 var mongoose = require('mongoose');
-mongoose.connect( 'mongodb://localhost/test' );
+var db       = mongoose.connect( 'mongodb://localhost/test' );
 
 var user_data= new mongoose.Schema({
-	id			: String,
-	pss			: String,
+	id			: String
+	,passwd		: String
 });
 
-mongoose.model( 'user_data', user_data );
-user_data = mongoose.model( 'user_data' );
+var UserData = db.model( 'user_data', user_data );
 
 http.createServer(function(req,res){
 
@@ -24,7 +23,7 @@ http.createServer(function(req,res){
 				var POST  = query.parse( body );
 				console.log( POST );
 
-				user_data.find( {}, function( err, result ){
+				UserData.find( function( err, result ){
 					if( err ) console.log( err );
 					console.log( result );
 					res.end();
