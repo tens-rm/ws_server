@@ -21,9 +21,9 @@ http.createServer(function(req,res){
 				var POST  = query.parse( body );
 				console.log( POST );
 
-				users.find( function( err, mice ){
+				users.find( function( err, result ){
 					if( err ) console.log( err );
-					res.write( mice );
+					console.log( result );
 					res.end();
 				});
 		} );
