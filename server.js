@@ -30,6 +30,8 @@ http.createServer(function(req,res){
 					for( var i=0; i<result.length; ++i ) {
 						console.log( result[ i ] );
 					}
+					res.writeHead(200, {"Content-Type": "text/plain"});
+					res.write( result );
 					res.end();
 				});
 		} );
