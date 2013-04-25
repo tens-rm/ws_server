@@ -43,24 +43,20 @@ http.createServer(function(req,res){
 	{
 		var params = url.parse( req.url, true );
 		console.log( params );
-
-		// ファイルが存在しているなら
-		path.exists( '.'+params.path, function( exists )
+		
+		fs.readFile('.'+params.path, function( err, data )
 		{
-			if( !exists )
+			if( err )
 			{
 				res.writeHead( 404, {'Content-Type':'text/plain'} );
 				res.write( '404 Not Found' );
 				res.end();
 				return ;
 			}
-			
-			fs.readFile('.'+params.path, function( err, data )
-			{
-				res.writeHead( 200, {'Content-Type':'text/plain'} );
-				res.end( data, 'binary' );
-				console.log( data );
-			});
+
+			res.writeHead( 200, {'Content-Type':'text/plain'} );
+			res.end( data, 'binary' );
+			console.log( data );
 		});
 	}
 	else
