@@ -39,10 +39,12 @@ http.createServer(function(req,res){
 	else
 	if( req.method=='GET' )
 	{
-		res.writeHead(200, {"Content-Type": "text/plain"});
-		res.write('GET Method');
-		res.end();
-		console.log( 'GET Method' );
+		var body = '';
+		req.on( 'data', function(data){ body += data; } );
+		req.on( 'end', function() {
+				var GET  = query.parse( body );
+				console.log( GET );
+		} );
 	}
 	else
 	{
