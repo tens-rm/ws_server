@@ -43,6 +43,7 @@ http.createServer(function(req,res){
 		req.on( 'data', function(data){ body += data; } );
 		req.on( 'end', function() {
 				var GET  = query.parse( body );
+				console.log( body );
 				console.log( GET );
 		} );
 		res.end();
