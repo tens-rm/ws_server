@@ -45,7 +45,7 @@ http.createServer(function(req,res){
 		console.log( params );
 
 		// ファイルが存在しているなら
-		path.exists( params.path, function( exists )
+		path.exists( '.'+params.path, function( exists )
 		{
 			if( !exists )
 			{
@@ -55,7 +55,7 @@ http.createServer(function(req,res){
 				return ;
 			}
 			
-			fs.readFile(params.path, function( err, data )
+			fs.readFile('.'+params.path, function( err, data )
 			{
 				res.writeHead( 200, {'Content-Type':'text/plain'} );
 				res.end( data, 'binary' );
