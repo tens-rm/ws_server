@@ -42,9 +42,14 @@ http.createServer(function(req,res){
 	if( req.method=='GET' )
 	{
 		var params = url.parse( req.url, true );
-		console.log( params );
+
+		console.log( 'item num-> ' + params.query.length );
+		for( var i=0; i<params.query.length; ++i )
+		{
+			console.log( params.query[ i ] );
+		}
 		
-		fs.readFile('.'+params.path, function( err, data )
+		fs.readFile('./'+params.path, function( err, data )
 		{
 			if( err )
 			{
