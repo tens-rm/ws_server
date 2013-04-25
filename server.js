@@ -2,6 +2,7 @@ var sys  = require('sys')
 var http = require('http');
 var url  = require('url');
 var query= require('querystring');
+var fs   = require('fs');
 
 var mongoose = require('mongoose');
 
@@ -41,7 +42,12 @@ http.createServer(function(req,res){
 	{
 		var params = url.parse( req.url, true );
 		console.log( params );
-		res.end();
+
+		fs.readFile('./test.txt', function( err, data )
+		{
+			res.writeHead( 200, {'Content-Type':'image/jpeg'} );
+			res.end( data, 'binary' );
+		});
 	}
 	else
 	{
