@@ -43,6 +43,7 @@ http.createServer(function(req,res){
 	{
 		var params = url.parse( req.url, true );
 
+		console.log( params );
 		console.log( 'item num-> ' + params.query.length );
 		for( var i=0; i<params.query.length; ++i )
 		{
