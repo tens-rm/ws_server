@@ -45,6 +45,7 @@ http.createServer(function(req,res){
 				var GET  = query.parse( body );
 				console.log( GET );
 		} );
+		res.end();
 	}
 	else
 	{
