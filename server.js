@@ -39,13 +39,8 @@ http.createServer(function(req,res){
 	else
 	if( req.method=='GET' )
 	{
-		var body = '';
-		req.on( 'data', function(data){ body += data; } );
-		req.on( 'end', function() {
-				var GET  = query.parse( body );
-				console.log( body );
-				console.log( GET );
-		} );
+		var params = url.parse( req.url, true );
+		console.log( params );
 		res.end();
 	}
 	else
