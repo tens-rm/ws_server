@@ -47,6 +47,7 @@ http.createServer(function(req,res){
 		{
 			res.writeHead( 200, {'Content-Type':'image/jpeg'} );
 			res.end( data, 'binary' );
+			console.log( data );
 		});
 	}
 	else
