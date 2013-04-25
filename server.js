@@ -1,4 +1,4 @@
-var sys  = require('sys')
+ï»¿var sys  = require('sys')
 var http = require('http');
 var url  = require('url');
 var query= require('querystring');
@@ -7,7 +7,7 @@ var path = require('path');
 
 var mongoose = require('mongoose');
 
-// ƒXƒL[ƒ}’è‹`
+// ã‚¹ã‚­ãƒ¼ãƒå®šç¾©
 var users= new mongoose.Schema({
 	name		: String
 	,passwd		: String
@@ -44,7 +44,7 @@ http.createServer(function(req,res){
 		var params = url.parse( req.url, true );
 		console.log( params );
 
-		// ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ä‚¢‚é‚È‚ç
+		// ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¦ã„ã‚‹ãªã‚‰
 		path.exists( params.path, function( exists )
 		{
 			if( !exists )
