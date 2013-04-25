@@ -44,26 +44,26 @@ http.createServer(function(req,res){
 		var params = url.parse( req.url, true );
 
 		console.log( params );
-		console.log( 'item num-> ' + params.query.length );
-		for( var i=0; i<params.query.length; ++i )
-		{
-			console.log( params.query[ i ] );
-		}
-		
-		fs.readFile('./'+params.path, function( err, data )
-		{
-			if( err )
-			{
-				res.writeHead( 404, {'Content-Type':'text/plain'} );
-				res.write( '404 Not Found' );
-				res.end();
-				return ;
-			}
 
-			res.writeHead( 200, {'Content-Type':'text/plain'} );
-			res.end( data, 'binary' );
-			console.log( data );
-		});
+		var content = params.query.content;
+		if( content!=undefined )
+		{
+
+			fs.readFile('./'+content, function( err, data )
+			{
+				if( err )
+				{
+					res.writeHead( 404, {'Content-Type':'text/plain'} );
+					res.write( '404 Not Found' );
+					res.end();
+					return ;
+				}
+
+				res.writeHead( 200, {'Content-Type':'text/plain'} );
+				res.end( data, 'binary' );
+				console.log( data );
+			});
+		}
 	}
 	else
 	{
