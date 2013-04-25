@@ -3,6 +3,7 @@ var http = require('http');
 var url  = require('url');
 var query= require('querystring');
 var fs   = require('fs');
+var path = require('path');
 
 var mongoose = require('mongoose');
 
@@ -43,11 +44,23 @@ http.createServer(function(req,res){
 		var params = url.parse( req.url, true );
 		console.log( params );
 
-		fs.readFile('./test.txt', function( err, data )
+		// ƒtƒ@ƒCƒ‹‚ª‘¶İ‚µ‚Ä‚¢‚é‚È‚ç
+		path.exists( params.path, function( exists )
 		{
-			res.writeHead( 200, {'Content-Type':'image/jpeg'} );
-			res.end( data, 'binary' );
-			console.log( data );
+			if( !exists )
+			{
+				res.writeHead( 404, {'Content-Type':'text/plain'} );
+				res.write( '404 Not Found' );
+				res.end();
+				return ;
+			}
+			
+			fs.readFile(params.path, function( err, data )
+			{
+				res.writeHead( 200, {'Content-Type':'text/plain'} );
+				res.end( data, 'binary' );
+				console.log( data );
+			});
 		});
 	}
 	else
